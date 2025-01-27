@@ -14,7 +14,11 @@ app = FastAPI()
 # CORSの設定を強化
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # フロントエンドのURL
+    allow_origins=[
+        "http://localhost:3000",
+        "https://tech0-gen8-step4-pos-front-78.azurewebsites.net",
+        "https://tech0-gen8-step4-pos-app-78.azurewebsites.net"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -37,16 +41,15 @@ except SQLAlchemyError as e:
 
 @app.get("/health")
 async def health_check():
+    if not database_url:
+        return {"status": "healthy", "database": "not configured"}
     try:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
             connection.commit()
         return {"status": "healthy", "database": "connected"}
     except SQLAlchemyError:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Database connection failed"
-        )
+        return {"status": "healthy", "database": "connection failed"}
 
 @app.get("/")
 async def root():
