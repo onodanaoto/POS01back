@@ -11,12 +11,19 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)]
 )
 
-app = FastAPI()
+app = FastAPI(
+    title="POS System API",
+    description="Tech0 POS System Backend API",
+    version="1.0.0"
+)
 
 # CORSの設定
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",  # 開発環境
+        "https://tech0-gen8-step4-pos-app-77.azurewebsites.net"  # 本番環境
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
