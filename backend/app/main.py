@@ -9,7 +9,10 @@ app = FastAPI()
 # CORSミドルウェアの設定を修正
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # フロントエンドのオリジン
+    allow_origins=[
+        "http://localhost:3000",
+        "https://tech0-gen8-step4-pos-app-77.azurewebsites.net"  # フロントエンドのURL
+    ],
     allow_credentials=True,
     allow_methods=["*"],  # すべてのHTTPメソッドを許可
     allow_headers=["*"],  # すべてのヘッダーを許可
