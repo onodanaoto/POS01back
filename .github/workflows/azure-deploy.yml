@@ -1,4 +1,4 @@
-name: Deploy Backend to Azure
+name: Deploy Frontend to Azure
 
 on:
   push:
@@ -8,26 +8,26 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     
     steps:
     - uses: actions/checkout@v2
     
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
       with:
-        python-version: '3.9'
+        node-version: '18'
         
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      run: npm install
+        
+    - name: Build
+      run: npm run build
+      env:
+        NEXT_PUBLIC_API_URL: https://tech0-gen8-step4-pos-app-78.azurewebsites.net
         
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'tech0-gen8-step4-pos-app-78'
+        app-name: 'tech0-gen8-step4-pos-app-77'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: .
