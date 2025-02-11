@@ -1,17 +1,17 @@
-FROM python:3.9-slim
-
-# 本番環境用の設定を追加
-ENV PYTHONUNBUFFERED=1
-ENV PORT=8000
-ENV HOST=0.0.0.0
+FROM python:3.12-slim
 
 WORKDIR /app
 
+# 依存関係のインストール
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# アプリケーションコードのコピー
 COPY . .
 
-EXPOSE 8000
+# 環境変数の設定
+ENV PORT=8000
+ENV HOST=0.0.0.0
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"] 
+# アプリケーションの起動コマンドを修正
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"] 
