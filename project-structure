@@ -1,0 +1,13 @@
+pos-system/
+├── docker-compose.yml
+├── frontend/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+├── backend/
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── app/
+└── mysql/
+    ├── Dockerfile
+    └── init/ 

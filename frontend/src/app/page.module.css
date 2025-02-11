@@ -1,0 +1,68 @@
+/* レイアウト */
+.main {
+  padding: 2rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 入力エリア */
+.inputArea {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 商品情報 */
+.productInfo {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* カートエリア */
+.cartList {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* ボタン */
+.styledButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.styledButton:hover {
+  background-color: #0051a2;
+} 

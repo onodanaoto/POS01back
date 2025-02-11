@@ -1,0 +1,71 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./src/app/page.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+/* レイアウト */
+.page_main__GlU4n {
+  padding: 2rem;
+}
+
+.page_container__aoG4z {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 入力エリア */
+.page_inputArea__eoM5K {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.page_input___cVLA {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 商品情報 */
+.page_productInfo__6QZeh {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* カートエリア */
+.page_cartList__9EqBu {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.page_cartItem__7B9lv {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* ボタン */
+.page_styledButton__tlh_i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.page_styledButton__tlh_i:hover {
+  background-color: #0051a2;
+} 
