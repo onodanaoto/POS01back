@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from .database import SessionLocal, engine
 from sqlalchemy.orm import Session
@@ -27,15 +27,13 @@ async def health_check():
     return {"status": "ok"}
 
 # 商品検索エンドポイント
-@app.get("/products/{code}")
-async def get_product(code: str):
+@app.get("/products/search")
+async def get_product(code: str = Query(...)):
     try:
         db = SessionLocal()
-        print(f"Database URL: {os.getenv('DATABASE_URL')}")  # デバッグ用
-        # デバッグ用にクエリを出力
+        print(f"Database URL: {os.getenv('DATABASE_URL')}")
         print(f"Searching for product with code: {code}")
         
-        # 商品マスタから商品を検索
         product = db.execute(
             "SELECT CODE, NAME, PRICE FROM 商品マスタ WHERE CODE = :code",
             {"code": code}
@@ -44,16 +42,14 @@ async def get_product(code: str):
         if product is None:
             raise HTTPException(status_code=404, detail="Product not found")
             
-        # デバッグ用に結果を出力
         print(f"Found product: {product}")
-            
         return {
             "CODE": product.CODE,
             "NAME": product.NAME,
             "PRICE": product.PRICE
         }
     except Exception as e:
-        print(f"Error details: {str(e)}")  # デバッグ用
+        print(f"Error details: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         db.close()
