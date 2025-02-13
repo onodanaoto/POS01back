@@ -1,6 +1,6 @@
 FROM python:3.12-slim
 
-WORKDIR /app
+WORKDIR /home/site/wwwroot
 
 # 依存関係のインストール
 COPY requirements.txt .
@@ -13,5 +13,4 @@ COPY . .
 ENV PORT=8000
 ENV HOST=0.0.0.0
 
-# アプリケーションの起動コマンドを修正
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"] 
