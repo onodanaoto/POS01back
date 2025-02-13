@@ -29,8 +29,9 @@ async def health_check():
 # 商品検索エンドポイント
 @app.get("/products/{code}")
 async def get_product(code: str):
-    db = SessionLocal()
     try:
+        db = SessionLocal()
+        print(f"Database URL: {os.getenv('DATABASE_URL')}")  # デバッグ用
         # デバッグ用にクエリを出力
         print(f"Searching for product with code: {code}")
         
@@ -52,7 +53,7 @@ async def get_product(code: str):
             "PRICE": product.PRICE
         }
     except Exception as e:
-        print(f"Error occurred: {str(e)}")
+        print(f"Error details: {str(e)}")  # デバッグ用
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         db.close()
