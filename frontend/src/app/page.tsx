@@ -23,7 +23,7 @@ export default function Home() {
   // 商品コード読み込みボタンのハンドラー
   const handleReadProduct = async () => {
     try {
-      const response = await fetch(`${API_URL}/products/${productCode}`)
+      const response = await fetch(`${API_URL}/products/search?code=${productCode}`)
       if (response.ok) {
         const product = await response.json()
         setCurrentProduct(product)
