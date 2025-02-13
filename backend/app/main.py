@@ -3,19 +3,19 @@ from fastapi.middleware.cors import CORSMiddleware
 from .database import SessionLocal, engine
 from sqlalchemy.orm import Session
 from typing import List
+import os
 
 app = FastAPI()
 
-# CORSミドルウェアの設定を修正
+# 環境変数からCORS設定を取得
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://tech0-gen8-step4-pos-app-77.azurewebsites.net"  # フロントエンドのURL
-    ],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],  # すべてのHTTPメソッドを許可
-    allow_headers=["*"],  # すべてのヘッダーを許可
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/")
