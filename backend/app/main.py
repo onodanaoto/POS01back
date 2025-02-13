@@ -8,7 +8,9 @@ import os
 app = FastAPI()
 
 # 環境変数からCORS設定を取得
-CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "https://tech0-gen8-step4-pos-app-78.azurewebsites.net").split(",")
+if not any(CORS_ORIGINS):
+    CORS_ORIGINS = ["http://localhost:3000"] if os.getenv("ENV") == "development" else ["https://tech0-gen8-step4-pos-app-78.azurewebsites.net"]
 
 app.add_middleware(
     CORSMiddleware,
