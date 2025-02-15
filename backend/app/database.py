@@ -6,7 +6,7 @@ import os
 # Azure MySQL用の接続文字列（SSL設定を追加）
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "mysql+pymysql://Tech0Gen8TA4@tech0-gen-8-step4-db-4.mysql.database.azure.com:3306/pos_db?ssl=true"
+    "mysql+pymysql://Tech0Gen8TA4:sakepara2025@tech0-gen-8-step4-db-4.mysql.database.azure.com:3306/pos_db?ssl=true"
 )
 
 engine = create_engine(
