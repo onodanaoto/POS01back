@@ -34,6 +34,12 @@ async def get_product(code: str = Query(...)):
     try:
         db = SessionLocal()
         print(f"Database URL: {os.getenv('DATABASE_URL')}")
+        print(f"Attempting to connect to database...")
+        
+        # 接続テスト
+        db.execute("SELECT 1").fetchone()
+        print("Database connection successful")
+        
         print(f"Searching for product with code: {code}")
         
         product = db.execute(
