@@ -12,5 +12,7 @@ COPY . .
 # 環境変数の設定
 ENV PORT=8000
 ENV HOST=0.0.0.0
+ENV PATH="/home/site/wwwroot/.local/bin:${PATH}"
 
+# 直接uvicornを実行
 CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"] 
