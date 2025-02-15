@@ -9,8 +9,7 @@ RUN apt-get update && \
 
 # 依存関係のインストール
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt && \
-    pip install --no-cache-dir uvicorn==0.27.1
+RUN pip install --no-cache-dir -r requirements.txt
 
 # アプリケーションコードのコピー
 COPY . .
@@ -19,5 +18,9 @@ COPY . .
 ENV PORT=8000
 ENV HOST=0.0.0.0
 
-# uvicornを直接実行
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"] 
+# スタートアップスクリプトの作成
+RUN echo "#!/bin/bash\ncd /home/site/wwwroot && pip install uvicorn && uvicorn app.main:app --host 0.0.0.0 --port 8000" > /startup.sh && \
+    chmod +x /startup.sh
+
+# スタートアップスクリプトを実行
+CMD ["/startup.sh"] 
