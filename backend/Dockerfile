@@ -9,7 +9,8 @@ RUN apt-get update && \
 
 # 依存関係のインストール
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir uvicorn==0.27.1
 
 # アプリケーションコードのコピー
 COPY . .
