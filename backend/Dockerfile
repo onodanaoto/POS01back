@@ -1,6 +1,6 @@
 FROM python:3.12-slim
 
-WORKDIR /home/site/wwwroot
+WORKDIR /home/site/wwwroot  # Azure App Serviceのデフォルトパス
 
 # システムパッケージのインストール
 RUN apt-get update && \
@@ -9,8 +9,7 @@ RUN apt-get update && \
 
 # 依存関係のインストール
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt && \
-    pip install --no-cache-dir uvicorn
+RUN pip install --no-cache-dir -r requirements.txt
 
 # アプリケーションコードのコピー
 COPY . .
